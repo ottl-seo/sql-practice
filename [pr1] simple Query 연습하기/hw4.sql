@@ -19,7 +19,7 @@ SELECT distinct(D.driver) from Drivers as D, Results as R where (R.driver=D.driv
 (첫 번째 정렬기준은 그랑프리 참가 횟수, 두 번째 정렬기준은 드라이버의 이름이다.) */
 SELECT D.driver, C.races_entered from Drivers as D, Constructors as C where (D.constructor=C.constructor) order by races_entered desc, driver desc;
 
-/*g) Cosworth 엔진을 사용하는 레이싱 팀과 Mercedes 엔진을 사용하는 레이싱 팀을 모두 가지고 있는 모든 나라를 찾아라 */
+/*g) Cosworth 엔진을 사용하는 레이싱 팀과 Mercedes 엔진을 사용하는 레이싱 팀을 모두 가지고 있는 모든 나라를 찾아라. */
 SELECT c1.country from constructors c1 INNER JOIN constructors c2 ON c2.country=c1.country AND c2.engine='Mercedes' WHERE c1.engine='Cosworth';
 
 /*h) 그랑프리에서 우승한 적이 있으면서 순위에는 들었으나 우승을 하지 못했던 드라이버들을 중복없이 찾아라. */
