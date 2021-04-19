@@ -7,7 +7,8 @@ SELECT D.driver from Drivers as D, Constructors as C where (C.country='Italian' 
 SELECT D.driver from Constructors as C, Drivers as D where (C.country=D.country and C.constructor=D.constructor);
 
 /*c) Monaco Grand Prix 그랑프리에 참가한 드라이버의 이름, 드라이버가 소속된 레이싱팀의 엔진과 그랑프리 참가 횟수를 열거하여라. */
-SELECT R.driver, C.engine, C.races_entered FROM Results as R, Drivers as D, Constructors as C where (R.Race='Monaco Grand Prix' and R.driver=D.driver and D.constructor=C.constructor);
+SELECT R.driver, C.engine, C.races_entered FROM Results as R, Drivers as D, Constructors as C 
+ where (R.Race='Monaco Grand Prix' and R.driver=D.driver and D.constructor=C.constructor);
 
 /*d) 오직 하나의 드라이버를 가지는 모든 레이싱 팀을 찾아라. */
 SELECT constructor from Drivers group by constructor having count(driver)=1;
