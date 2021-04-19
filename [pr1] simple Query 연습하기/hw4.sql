@@ -27,4 +27,5 @@ SELECT c1.country from constructors c1 INNER JOIN constructors c2 ON c2.country=
 SELECT distinct(r1.driver) from results r1 INNER JOIN results r2 ON r1.driver=r2.driver AND r1.race_rank='first place' WHERE r2.race_rank!='first place';
 
 /*i) 2008년부터 2009년까지 2년 동안 개최한 그랑프리에 참가한 드라이버의 이름과 드라이버가 참가한 그랑프리의 날짜(begindate)의 월과 년도(형식: mm-yyyy)를 열거하라. */
-SELECT result.driver, date_format(race.beginDate,'%m-%Y') FROM Races as race, Results as result WHERE (beginDate between '2008-01-01' and '2009-12-31') AND result.race=race.Name;
+SELECT result.driver, date_format(race.beginDate,'%m-%Y') FROM Races as race, Results as result 
+WHERE (beginDate between '2008-01-01' and '2009-12-31') AND result.race=race.Name;
