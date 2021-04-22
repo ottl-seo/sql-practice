@@ -5,7 +5,7 @@
 : 데이터베이스 Management 시스템.
 서로 관련있는 데이터를 연결하고, 접근을 쉽게 해주는 프로그램.
 
-### <데이터베이스의 목적>
+### 데이터베이스의 목적
 
 -> 파일시스템의 단점 보완
 
@@ -20,8 +20,7 @@
 
 ---
 
-### <Data Models>
-
+### Data Models
 : 저장된 데이터들의 관계를 설명해준다..
 
 데이터들의 구조가 어떻게 연결되어 있는가 등
@@ -34,7 +33,7 @@
 
 ---
 
-### <추상화 Abstraction>
+### 추상화 Abstraction
 
 데이터베이스의 목적: 추상화
 
@@ -69,7 +68,8 @@ logical level 예시
 
 ---
 
-### **<Database Engine>** (DB시스템의 구성요소 3가지)
+### **Database Engine** 
+(DB시스템의 구성요소 3가지)
 
 **1. 스토리지 매니저**
 
@@ -87,13 +87,13 @@ DDL interpreter, DML compiler, Query evaluation engine
 
 -> 시스템 고장 시에도 복구 가능하도록
 
-### <Query Processing> 쿼리 프로세싱
+### Query Processing 쿼리 프로세싱
 
 ![https://blog.kakaocdn.net/dn/KfoNq/btq3gbj8Okw/JW06SyvjZs7lcQngqy1H11/img.png](https://blog.kakaocdn.net/dn/KfoNq/btq3gbj8Okw/JW06SyvjZs7lcQngqy1H11/img.png)
 
 ---
 
-### <Database Application> 응용프로그램
+### Database Application (응용프로그램)
 
 - 2계층 / 3계층 구조로 나뉨
 
@@ -105,10 +105,10 @@ DDL interpreter, DML compiler, Query evaluation engine
 
 ---
 
-### <Database Users>
+### Database Users
 
 ![https://blog.kakaocdn.net/dn/FAme4/btq27nz8UCP/m95eSPNtOJ1JtAgzHq9EQ0/img.png](https://blog.kakaocdn.net/dn/FAme4/btq27nz8UCP/m95eSPNtOJ1JtAgzHq9EQ0/img.png)
 
-### <Database System의 역사>
+### Database System의 역사
 
 - 생략
