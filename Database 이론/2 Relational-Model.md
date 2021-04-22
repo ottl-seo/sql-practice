@@ -49,7 +49,7 @@ Ex.  instructor(ID, name, dept_name, salary)
 - Instance 란
 
 snapshot of the data in the database at a given instant in time.
-
+####
 ### Keys
 
 - **superkey**
@@ -57,19 +57,19 @@ snapshot of the data in the database at a given instant in time.
 unique tuple을 구분이 가능한 attr (모든 집합 가능)
 
 ex. {ID}, {ID, name} 은 둘다 수퍼키이다. *// ID 포함하고 있으면 모든 집합 가능*
-
+####
 - **candidate key**
 
 superkey 중 minimal한 집합 (여러개 존재 가능)
 
 NULL값 존재 가능!!!
-
+####
 - **primary key**
 
 candidate 중 대표 하나
 
 primary key는 NULL이 될 수 없다
-
+####
 - **foreign key**
 
 Referencing relation 에서 정의한 foreign key는
@@ -77,7 +77,7 @@ Referencing relation 에서 정의한 foreign key는
 **Referenced relation 에서는 primary key** 여야 한다.
 
 // Referential Integrity (참조 무결성)내용
-
+####
 ### Relational Algebra
 
 - 생략
