@@ -29,14 +29,11 @@ SELECT * FROM Drivers;
  Hint: 데이터를 저장하기 위한 새로운 테이블을 만들 수 있다. */
 SELECT * FROM Drivers;
 SELECT * FROM Results;
-CREATE TABLE New1;
-INSERT INTO New1 
-    (SELECT driver, race 
-    FROM Results 
-    where race_rank='third place' and Race IN (SELECT Name From Races where Area='Asia')
-    );
-DELETE from Drivers where driver IN (SELECT * FROM New1);
-DELETE from Results where race IN (SELECT * FROM New1);
+
+CREATE view third_drivers as 
+    (SELECT driver, race FROM Results where race_rank='third place' and Race IN (SELECT Name From Races where Area='asia'));
+DELETE from Results where race IN (SELECT race FROM third_drivers);
+DELETE from Drivers where driver IN (SELECT driver FROM third_drivers);
 
 SELECT * FROM Drivers;
 SELECT * FROM Results;
@@ -44,14 +41,26 @@ SELECT * FROM Results;
 
 /* d) 
 차체의 높이와 너비를 인치(one inch = 2.5 centimeter)로 측정되도록 Constructors 릴레이션을 수정하라. */
-
+update constructors set height = height*2.5, width=width*2.5;
 
 /* e) 
 Honda 엔진을 사용하는 모든 드라이버는 그랑프리에서 기권을 한다. Results 릴레이션을 수정하라.
  ※ 기권은 race_rank를 ‘drop out’로 표현한다. */
-
+update results left outer join drivers on drivers.driver = results.driver 
+left outer join constructors on constructors.constructor = drivers.constructor set race_rank = 'drop out' where engine = 'Honda';
 
 /* f) 
 드라이버를 두 명 이상 가지고 있는 모든 레이싱 팀의 드라이버를 삭제하라. 해당 드라이버의 경기 기록도 삭제한다.
  Hint: 데이터를 저장하기 위한 새로운 테이블을 만들 수 있다. */
+SELECT * FROM Drivers;
+SELECT * FROM Results;
 
+CREATE view constructor_more_two as 
+    (SELECT constructor FROM Drivers GROUP BY constructor HAVING count(driver)>=2);
+CREATE view driver_more_two as 
+    (SELECT driver FROM Drivers where constructor IN (SELECT * FROM constructor_more_two));
+DELETE from Results where driver IN (SELECT * FROM driver_more_two);
+DELETE from Drivers where driver IN (SELECT * FROM driver_more_two);
+
+SELECT * FROM Drivers;
+SELECT * FROM Results;
