@@ -13,10 +13,15 @@ SELECT constructor, max(birthday) FROM Drivers GROUP BY constructor;
 SELECT avg(C.height) From Constructors C, Drivers D where D.country='German' and C.constructor=D.constructor;
 
 -- e) 그랑프리에서 우승을 한 적이 있는 레이싱 팀에 대해 각 레이싱 팀의 우승한 횟수를 구하여라.
-
+select constructor, count(constructor) as count from results 
+left outer join drivers on drivers.driver = results.driver where race_rank = 'first place' group by constructor;
 
 -- f) 적어도 2 명의 드라이버를 가지고 있으면서 우승을 한 적이 있는 레이싱 팀의 수를 구하여라.
-
+select count(*) as count from (select count(*) from drivers as B 
+        left outer join (select distinct drivers.driver, constructor, race_rank from results 
+        left outer join drivers on drivers.driver = results.driver 
+        where race_rank ='first place') 
+    A on A.constructor = B.constructor  group by B.constructor having count(A.constructor)>1) C;
 
 -- g) 각 국가 별, 레이싱 팀에 속한 모든 드라이버의 평균 나이를 구하라. 한 국가에 속한 레이싱 팀이 하나 이상일 경우, 레이싱 팀별로 표시한다.
 -- hint) TIMESTAMPDIFF 함수 사용
