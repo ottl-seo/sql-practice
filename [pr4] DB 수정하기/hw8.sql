@@ -5,4 +5,5 @@ ALTER table constructors DROP races_entered;
 
 -- a) 1-(b)의 Constructors 릴레이션의 스키마로부터 tire 속성(attribute)을 포함하는 수정된 Constructors 릴레이션으로 수정(alteration)하라.
 -- ※ tire 속성의 값은 KoreanCompany이다.
-ALTER TABLE constructors ADD COLUMN tire varchar(20) NOT NULL;
+ALTER TABLE constructors ADD tire varchar(30);
+UPDATE constructors set tire="Korean company";

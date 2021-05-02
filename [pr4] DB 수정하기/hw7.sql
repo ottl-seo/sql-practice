@@ -30,10 +30,15 @@ SELECT * FROM Drivers;
 SELECT * FROM Drivers;
 SELECT * FROM Results;
 
-CREATE view third_drivers as 
-    (SELECT driver, Race FROM Results where race_rank='third place' and Race IN (SELECT Name From Races where Area='asia'));
-DELETE from Results where race IN (SELECT race FROM third_drivers);
-DELETE from Drivers where driver IN (SELECT driver FROM third_drivers);
+CREATE table third_drivers1 (
+    driver varchar(20),
+    race varchar(30),
+    primary key(driver, race)
+);
+INSERT INTO third_drivers1 (SELECT driver, Race FROM Results where race_rank='third place' and Race IN (SELECT Name From Races where Area='asia'));
+
+DELETE from Results where race IN (SELECT race FROM third_drivers1);
+DELETE from Drivers where driver IN (SELECT driver FROM third_drivers1);
 
 SELECT * FROM Drivers;
 SELECT * FROM Results;
@@ -59,12 +64,20 @@ SELECT * FROM Results;
 SELECT * FROM Drivers;
 SELECT * FROM Results;
 
-CREATE view constructor_more_two as 
-    (SELECT constructor FROM Drivers GROUP BY constructor HAVING count(driver)>=2);
-CREATE view driver_more_two as 
-    (SELECT driver FROM Drivers where constructor IN (SELECT * FROM constructor_more_two));
-DELETE from Results where driver IN (SELECT * FROM driver_more_two);
-DELETE from Drivers where driver IN (SELECT * FROM driver_more_two);
+CREATE table constructor_more_two1 (
+    constructor varchar(20),
+    primary key(constructor)
+);
+INSERT INTO constructor_more_two1 (SELECT constructor FROM Drivers GROUP BY constructor HAVING count(driver)>=2);
+
+CREATE table driver_more_two1 (
+    driver varchar(20),
+    primary key(driver)
+);
+INSERT INTO driver_more_two1 (SELECT driver FROM Drivers where constructor IN (SELECT * FROM constructor_more_two1));
+
+DELETE from Results where driver IN (SELECT * FROM driver_more_two1);
+DELETE from Drivers where driver IN (SELECT * FROM driver_more_two1);
 
 SELECT * FROM Drivers;
 SELECT * FROM Results;
