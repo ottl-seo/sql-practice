@@ -1,6 +1,6 @@
 /* 5. 위의 데이터베이스 스키마를 기반으로 subquery를 포함하는 다음의 SQL 쿼리를 작성하라. 
 각 문제의 답에 적어도 하나 이상의 subquery를 사용하여야 하고 각 문제의 쿼리는 다른 문제의 쿼리와 다른 방법으로 작성하시오. 
-(예. 각 방법은 EIXSTS, IN, ALL, SOME 그리고 ANY와 같은 다른 집합 연산자들을 사용해야 하고 NOT을 같이 사용할 수도 있다)*/
+(예. 각 방법은 EIXSTS, IN, ALL, SOME 그리고 ANY와 같은 다른 집합 연산자들을 사용해야 하고 NOT을 같이 사용할 수도 있다) */
 
  -- a) 그랑프리에 가장 많이 참가한 레이싱 팀을 소유한 나라(country)를 찾아라.
 SELECT country FROM Constructors where races_entered = ALL(SELECT max(races_entered) from Constructors);
